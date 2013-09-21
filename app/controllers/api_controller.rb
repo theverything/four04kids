@@ -1,14 +1,19 @@
 class ApiController < ApplicationController
   before_filter :set_access_control_headers
   def random
-    query = Kid.near([location.latitude, location.longitude], 500)
+    if location.country_code == "US"
+      query = Kid.near([location.latitude, location.longitude], 500)
+    else
+      query = Kid.all
+    end
     query = query.where("age > 0")
-    query = query.where("id != ?", params[:exclude]) if params[:exclude]
+    query = query.where("id != ?", params[:exclude].to_i) if params[:exclude]
     @kid = query.to_a.sample
     render json: @kid
   end
 
   def index
+    Kid.all.to_a
   end
 
   def show
