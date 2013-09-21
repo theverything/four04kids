@@ -1,4 +1,11 @@
 Four04kids::Application.routes.draw do
+  root 'static_pages#home'
+
+  get 'about' => 'static_pages#about', as: :about
+  get 'stories' => 'static_pages#stories', as: :stories
+  get 'donate' => 'static_pages#donate', as: :donate
+  get 'docs' => 'static_pages#docs', as: :docs
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -39,7 +46,7 @@ Four04kids::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
