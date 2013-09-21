@@ -38,7 +38,7 @@ styles = """
     margin-left: 10px;
     position: relative;
     left: 10px;
-    top: 6px;
+    top: 17px;
   }
   #{wrapperClass} .info h3, #{wrapperClass} .info h4 {
     margin: 0px 0 10px;
@@ -96,6 +96,10 @@ styles = """
 </style>
 """
 template = (kid) ->
+  missing = kid.missing_date
+  year = parseInt(missing.slice(0,4), 10)
+  month = parseInt(missing.slice(6,8), 10)
+  day = parseInt(missing.slice(9,11), 10)
   ageString = if kid.age then "#{kid.age} Years Old" else "Age Not Provided"
   html = """
   #{styles}
@@ -107,7 +111,7 @@ template = (kid) ->
       <div class="info">
         <h3>#{kid.full_name}</h3>
         <h4>#{ageString}</h4>
-        <h4>Missing From #{kid.missing_city}, #{kid.missing_state} since #{kid.missing_date}</h4>
+        <h4>Missing From #{kid.missing_city}, #{kid.missing_state}<br>since #{kid.missing_date}</h4>
         <h4>Have You Seen This Person?</h4>
         <br>
         <a href="#" class="btn btn-yes">Yes</a><a href="#" onclick="showKid()" class="btn">No</a>
