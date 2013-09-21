@@ -7,10 +7,8 @@ class Kid < ActiveRecord::Base
   validates_presence_of :missing_state
   validates_presence_of :image_url
 
-  has_many :kid_location
-
   geocoded_by :address
-  before_save :geocode
+  before_save :geocode, :if => :address_changed?
 
   def full_name
     "#{self.first_name} #{self.middle_name} #{last_name}"
