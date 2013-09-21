@@ -4,9 +4,3 @@
 require File.expand_path('../config/application', __FILE__)
 
 Four04kids::Application.load_tasks
-
-require 'rspec/core/rake_task'
-
-RSpec::Core::RakeTask.new(:spec)
-
-task :default => :spec
