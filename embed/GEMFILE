@@ -1,0 +1,5 @@
+gem 'guard'
+gem 'guard-coffeescript'
+gem 'guard-haml'
+gem 'rack'
+gem 'rack-livereload'
