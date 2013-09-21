@@ -96,6 +96,7 @@ styles = """
 </style>
 """
 template = (kid) ->
+  ageString = if kid.age then "#{kid.age} Years Old" else "Age Not Provided"
   html = """
   #{styles}
   <div class="#{wrapperClass.slice(1)}">
@@ -105,9 +106,10 @@ template = (kid) ->
       </div>
       <div class="info">
         <h3>#{kid.full_name}</h3>
-        <h4>#{kid.age} Years Old</h4>
-        <h4>Missing From #{kid.missing_city}, #{kid.missing_state}</h4>
+        <h4>#{ageString}</h4>
+        <h4>Missing From #{kid.missing_city}, #{kid.missing_state} since #{kid.missing_date}</h4>
         <h4>Have You Seen This Person?</h4>
+        <br>
         <a href="#" class="btn btn-yes">Yes</a><a href="#" onclick="showKid()" class="btn">No</a>
       </div>
       <div class="more-info" onclick="document.getElementById('kids404').className = 'flipped';">
