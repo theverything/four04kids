@@ -9,7 +9,6 @@ class CreateKids < ActiveRecord::Migration
       t.string :missing_city
       t.string :missing_state
       t.string :missing_county
-      t.string :missing_state
       t.string :missing_country
       t.date :missing_date
       t.integer :age
