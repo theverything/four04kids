@@ -40,8 +40,8 @@ styles = """
     left: 10px;
     top: 6px;
   }
-  #{wrapperClass} .info h3 {
-    margin: 0px;
+  #{wrapperClass} .info h3, #{wrapperClass} .info h4 {
+    margin: 0px 0 10px;
   }
   #{wrapperClass} .btn {
     text-decoration: none;
@@ -108,7 +108,7 @@ template = (kid) ->
         <h4>#{kid.age} Years Old</h4>
         <h4>Missing From #{kid.missing_city}, #{kid.missing_state}</h4>
         <h4>Have You Seen This Person?</h4>
-        <a href="#" class="btn btn-yes">Yes</a><a href="#" class="btn">No</a>
+        <a href="#" class="btn btn-yes">Yes</a><a href="#" onclick="showKid()" class="btn">No</a>
       </div>
       <div class="more-info" onclick="document.getElementById('kids404').className = 'flipped';">
         <span>?</span>
@@ -133,19 +133,20 @@ ajax = (opts) ->
       opts.done()
   xml.open("GET", opts.url, true)
   xml.send()
-showKid = ->
+window.showKid = ->
   ajax
     url: "http://fouroh4kids.herokuapp.com/api/random"
     done: ->
       data = JSON.parse(xml.responseText)
       kid = data.kid
       html = template(kid)
-      container = document.createElement('div')
+      container = document.getElementById("kids404") || document.createElement('div')
       container.id = "kids404"
       container.innerHTML = html
       script = document.getElementById("404kids-script")
       body = document.getElementsByTagName('body')[0]
       body.insertBefore(container, script)
+  false
 showKid()
 
 
