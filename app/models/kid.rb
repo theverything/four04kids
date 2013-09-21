@@ -9,7 +9,7 @@ class Kid < ActiveRecord::Base
   has_many :kid_location
 
   geocoded_by :address
-  after_validation :geocode
+  before_save :geocode
 
   def full_name
     "#{self.first_name} #{self.middle_name} #{last_name}"
