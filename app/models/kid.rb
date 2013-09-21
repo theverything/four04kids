@@ -31,6 +31,8 @@ class Kid < ActiveRecord::Base
   end
 
   def generate_image_url
-    self.image_url = self.thumbnail_url.gsub(/t\./, ".")
+    if self.thumbnail_url
+      self.image_url = self.thumbnail_url.gsub(/t\./, ".")
+    end
   end
 end
