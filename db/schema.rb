@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20130921202247) do
 
+
   create_table "kids", force: true do |t|
     t.string   "case_number"
     t.string   "org_prefix"
