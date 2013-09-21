@@ -11,7 +11,7 @@ describe "API routing" do
     )
     expect(get: "/api/index").to route_to(
       controller: "api",
-      action: "random"
+      action: "index"
     )
   end
 end

@@ -1,6 +1,6 @@
 class ApiController < ApplicationController
   def random
-    query = Kid.all
+    query = Kid.near([location.latitude, location.longitude])
     query = query.where("id != ?", params[:exclude]) if params[:exclude]
     @kid = query.to_a.sample
     render json: @kid
