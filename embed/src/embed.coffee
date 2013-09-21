@@ -27,18 +27,20 @@ styles = """
   }
   #{wrapperClass} .image {
     float: left;
-    width: 200px;
+    width: 160px;
+    height: 200px;
   }
   #{wrapperClass} .image img {
-    width: 200px;
+    max-width: 160px;
+    max-height: 200px;
   }
   #{wrapperClass} .info {
     margin-left: 10px;
     position: relative;
     left: 10px;
-    top: 4px;
+    top: 6px;
   }
-  #{wrapperClass} .info h2 {
+  #{wrapperClass} .info h3 {
     margin: 0px;
   }
   #{wrapperClass} .btn {
@@ -87,45 +89,63 @@ styles = """
   #{wrapperClass} .front {
     z-index: 2;
   }
-  #{wrapperClass} h2, #{wrapperClass} h4 {
+  #{wrapperClass} h3, #{wrapperClass} h4 {
     font-weight: 300;
     letter-spacing: 1px;
   }
 </style>
 """
-html = """
-#{styles}
-<div class="#{wrapperClass.slice(1)}">
-  <div class="front">
-    <div class="image">
-      <img src="http://placehold.it/200x200">
+template = (kid) ->
+  html = """
+  #{styles}
+  <div class="#{wrapperClass.slice(1)}">
+    <div class="front">
+      <div class="image">
+        <img src="http://missingkids.com/#{kid.image_url}">
+      </div>
+      <div class="info">
+        <h3>#{kid.full_name}</h3>
+        <h4>#{kid.age} Years Old</h4>
+        <h4>Missing From #{kid.missing_city}, #{kid.missing_state}</h4>
+        <h4>Have You Seen This Person?</h4>
+        <a href="#" class="btn btn-yes">Yes</a><a href="#" class="btn">No</a>
+      </div>
+      <div class="more-info" onclick="document.getElementById('kids404').className = 'flipped';">
+        <span>?</span>
+      </div>
     </div>
-    <div class="info">
-      <h2>Jane Doe</h2>
-      <h4>14 Years Old</h4>
-      <h4>Seattle, WA</h4>
-      <h4>Have You Seen Her?</h4>
-      <a href="#" class="btn btn-yes">Yes</a><a href="#" class="btn">No</a>
-    </div>
-    <div class="more-info" onclick="document.getElementById('kids404').className = 'flipped';">
-      <span>?</span>
+    <div class="back">
+      <p>More Information!</p>
+      <p>This person was first reported missing after leaving school in Tacoma, WA.</p>
+      <p>If you have any information report, please
+      <a href="#">fill out a report</a>. It takes less than 60 seconds.</p>
+      <div class="more-info" onclick="document.getElementById('kids404').className = '';">
+        <span>x</span>
+      </div>
     </div>
   </div>
-  <div class="back">
-    <p>More Information!</p>
-    <p>This person was first reported missing after leaving school in Tacoma, WA.</p>
-    <p>If you have any information report, please
-    <a href="#">fill out a report</a>. It takes less than 60 seconds.</p>
-    <div class="more-info" onclick="document.getElementById('kids404').className = '';">
-      <span>x</span>
-    </div>
-  </div>
-</div>
-"""
-container = document.createElement('div')
-container.id = "kids404"
-container.innerHTML = html
-script = document.getElementById("404kids-script")
-body = document.getElementsByTagName('body')[0]
-body.insertBefore(container, script)
+  """
+xml = null
+ajax = (opts) ->
+  xml = new XMLHttpRequest()
+  xml.onreadystatechange = ->
+    if xml.readyState == 4 && xml.status == 200
+      opts.done()
+  xml.open("GET", opts.url, true)
+  xml.send()
+showKid = ->
+  ajax
+    url: "http://localhost:3000/api/random"
+    done: ->
+      data = JSON.parse(xml.responseText)
+      kid = data.kid
+      html = template(kid)
+      container = document.createElement('div')
+      container.id = "kids404"
+      container.innerHTML = html
+      script = document.getElementById("404kids-script")
+      body = document.getElementsByTagName('body')[0]
+      body.insertBefore(container, script)
+showKid()
+
 

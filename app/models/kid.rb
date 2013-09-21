@@ -15,7 +15,7 @@ class Kid < ActiveRecord::Base
   end
 
   def create_full_address
-    unless self.missing_city.blank? && self.missing_state.blank? 
+    unless self.missing_city.blank? && self.missing_state.blank?
       self.address = "#{self.missing_city}, #{self.missing_state}"
     else
       self.address = self.missing_state

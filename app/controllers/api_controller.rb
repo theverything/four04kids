@@ -1,4 +1,5 @@
 class ApiController < ApplicationController
+  before_filter :set_access_control_headers
   def random
     query = Kid.near([location.latitude, location.longitude], 500)
     query = query.where("id != ?", params[:exclude]) if params[:exclude]
@@ -10,5 +11,12 @@ class ApiController < ApplicationController
   end
 
   def show
+  end
+
+  private
+
+  def set_access_control_headers
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Request-Method'] = '*'
   end
 end

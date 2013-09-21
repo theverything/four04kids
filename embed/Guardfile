@@ -1,6 +1,9 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
+require 'bundler'
+Bundler.require
+
 guard 'coffeescript', :input => 'src'
 
 # Sample guardfile block for Guard::Haml
@@ -15,7 +18,6 @@ guard 'haml' do
 end
 
 guard 'livereload' do
-
   watch("src/embed.js")
   watch("demo.html")
 end
