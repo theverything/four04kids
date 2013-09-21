@@ -18,6 +18,8 @@ one:
   missing_state: "WA"
   missing_county: "King"
   aged_photo_url: ""
+  latitude: 47.6104
+  longitude: -122.2007
 
 # column: value
 #
@@ -35,5 +37,23 @@ two:
   missing_state: "WA"
   missing_county: "King"
   aged_photo_url: ""
+  latitude: 47.6104
+  longitude: -122.2007
 
 #  column: value
+local:
+  id: 3
+  thumbnail_url: ""
+  image_url: ""
+  age: 5
+  case_number: "1050"
+  org_prefix: 'org'
+  first_name: "Jane"
+  last_name: "Doe"
+  middle_name: "Jillian"
+  missing_city: "Seattle"
+  missing_state: "WA"
+  missing_county: "King"
+  aged_photo_url: ""
+  latitude: 47.6104
+  longitude: -122.2007
