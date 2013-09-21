@@ -41,6 +41,7 @@ end
 #geo location
 gem 'geocoder'
 gem "active_model_serializers"
+gem 's3'
 
 group :test do
   gem 'rspec-rails'

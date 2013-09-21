@@ -27,7 +27,7 @@
 
   showKid = function() {
     return ajax({
-      url: "http://localhost:3000/api/random",
+      url: "http://fouroh4kids.herokuapp.com/api/random",
       done: function() {
         var body, container, data, html, kid, script;
         data = JSON.parse(xml.responseText);

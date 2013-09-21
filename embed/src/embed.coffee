@@ -135,7 +135,7 @@ ajax = (opts) ->
   xml.send()
 showKid = ->
   ajax
-    url: "http://localhost:3000/api/random"
+    url: "http://fouroh4kids.herokuapp.com/api/random"
     done: ->
       data = JSON.parse(xml.responseText)
       kid = data.kid
