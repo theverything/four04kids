@@ -22,6 +22,11 @@ class Kid < ActiveRecord::Base
     end
   end
 
+  def add_hostname_to_url(hostname, url)
+    base = self.send(url.to_sym)
+    self.send("#{url.to_sym}=",  "#{hostname}#{base}")
+  end
+
   def method_missing(method, *args, &block)
     if method.to_s =~ /^fullname$/
       self.full_name
