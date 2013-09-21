@@ -1,5 +1,6 @@
 class Kid < ActiveRecord::Base
   before_validation :create_full_address
+  before_validation :generate_image_url
 
   validates_presence_of :first_name
   validates_presence_of :last_name
@@ -29,5 +30,9 @@ class Kid < ActiveRecord::Base
     else
       super
     end
+  end
+
+  def generate_image_url
+    self.image_url = self.thumbnail_url.gsub(/t\./, ".")
   end
 end
