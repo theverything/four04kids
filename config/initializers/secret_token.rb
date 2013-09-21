@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Four04kids::Application.config.secret_key_base = 'cc1255af910705f42ede76dced95d5a33c93ca3e8556900b084745719e4fe847b1ea147e3d7a9529facd4bb6fa4afb929ebf1fbb78dfbe1f07cdc283e0e0b84f'
+Four04kids::Application.config.secret_key_base = Rails.env.production? ? ENV['RAILS_SECRET_TOKEN'] : "a" * 128
