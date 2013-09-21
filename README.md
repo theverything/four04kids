@@ -4,6 +4,8 @@ This repository is the backend for [404kids.org](http://404kids.org).
 
 ### Installation
 
+[Live Demo](https://s3.amazonaws.com/404kids/public/demo.html)
+
 Simply drop this line of code on your page:
 
 ~~~HTML

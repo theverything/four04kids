@@ -51,7 +51,6 @@ namespace :scrape do
           nk.thumbnail = kid['hasThumbnail']
           nk.poster = kid['hasPoster']
           nk.thumbnail_url = kid['thumbnailUrl']
-          nk.race = kid['race'].downcase
           if nk.save
             print "."
           else
