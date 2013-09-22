@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20130922002340) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "afterparty_jobs", force: true do |t|
     t.text     "job_dump"
     t.string   "queue"
@@ -25,14 +22,6 @@ ActiveRecord::Schema.define(version: 20130922002340) do
     t.text     "error_message"
     t.text     "error_backtrace"
     t.datetime "completed_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "kid_locations", force: true do |t|
-    t.string   "address"
-    t.float    "latitude"
-    t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

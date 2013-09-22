@@ -1,8 +1,13 @@
 class ApiController < ApplicationController
   before_filter :set_access_control_headers
   def random
+    unless params[:location].blank?
+      @location = params[:location]
+    else
+      @location = [location.latitude, location.longitude]
+    end
     if location.country_code == "US"
-      query = Kid.near([location.latitude, location.longitude], 500)
+      query = Kid.near(@location, 500)
     else
       query = Kid.all
     end
