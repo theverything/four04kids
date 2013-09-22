@@ -217,26 +217,48 @@ footer {
         width: 30px;
         display: block;
         background-size: 30px;
+        &.facebook, &.google, &.github, &.google, &.github,
+        &.twitter, &.facebook, &.twitter
+          { display: block; background: image-url('social_sprites.png') no-repeat; }
         &.facebook{
-          background-image: image-url('facebookgray.png');
+          background-position: -0px -90px; width: 30px; height: 30px;
           &:hover {
-            background-image: image-url('facebookorange.png');
+            background-position: -0px -0px; width: 30px; height: 30px;
           }
-        } &.google{
-          background-image: image-url('googlegray.png');
+        }
+        &.google{
+          background-position: -30px -30px; width: 30px; height: 30px;
           &:hover {
-            background-image: image-url('googleorange.png');
+            background-position: -30px -0px; width: 30px; height: 30px;
           }
-        } &.twitter{
-          background-image: image-url('twittergray.png');
+        }
+        &.twitter{
+          background-position: -30px -60px; width: 30px; height: 30px;
           &:hover {
-            background-image: image-url('twitterorange.png');
+            background-position: -30px -90px; width: 30px; height: 30px;
+          }
+        }
+        &.github{
+          background-position: -0px -30px; width: 30px; height: 30px;
+          &:hover {
+            background-position: -0px -60px; width: 30px; height: 30px;
           }
         }
       }
     }
   }
 }
+
+// Positions of the sprite images
+
+// .facebookorange { background-position: -0px -0px; width: 30px; height: 30px; }
+// .googleorange { background-position: -30px -0px; width: 30px; height: 30px; }
+// .githubgray { background-position: -0px -30px; width: 30px; height: 30px; }
+// .googlegray { background-position: -30px -30px; width: 30px; height: 30px; }
+// .githuborange { background-position: -0px -60px; width: 30px; height: 30px; }
+// .twittergray { background-position: -30px -60px; width: 30px; height: 30px; }
+// .facebookgray { background-position: -0px -90px; width: 30px; height: 30px; }
+// .twitterorange { background-position: -30px -90px; width: 30px; height: 30px; }
 
 .main {
   background-color: #ccc;
