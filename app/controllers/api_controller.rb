@@ -16,7 +16,7 @@ class ApiController < ApplicationController
     @kid = query.to_a.sample
     job = Afterparty::BasicJob.new @kid, :increment
     Rails.configuration.queue << job
-    render json: @kid
+    render json: @kid, meta: {location: location.data}
   end
 
   def index
