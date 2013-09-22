@@ -30,7 +30,7 @@ namespace :embed do
         end
 
         if !obj || (obj.etag != Digest::MD5.hexdigest(File.read(file)))
-            print "U"
+            print "+"
             obj = bucket.objects.build(remote_file)
             obj.content = open(file)
             obj.content_type = MIME::Types.type_for(file).to_s

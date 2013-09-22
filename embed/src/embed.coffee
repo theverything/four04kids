@@ -4,6 +4,7 @@ styles = """
 <style>
   #kids404 {
     perspective: 1000;
+    text-align: left;
   }
   #kids404.flipped #{wrapperClass} {
     transform: rotateY(180deg);
@@ -78,7 +79,6 @@ styles = """
     top: 10px;
     left: 10px;
     width: #{width}px;
-    background-color: white;
     height: 200px;
   }
   #{wrapperClass} .back {
@@ -98,9 +98,25 @@ styles = """
 template = (kid) ->
   missing = kid.missing_date
   year = parseInt(missing.slice(0,4), 10)
-  month = parseInt(missing.slice(6,8), 10)
-  day = parseInt(missing.slice(9,11), 10)
+  month = parseInt(missing.slice(5,7), 10)
+  day = parseInt(missing.slice(8,10), 10)
+  date = new Date(year, month-1, day)
   ageString = if kid.age then "#{kid.age} Years Old" else "Age Not Provided"
+  months = [
+    "January"
+    "February"
+    "March"
+    "April"
+    "May"
+    "June"
+    "July"
+    "August"
+    "September"
+    "October"
+    "November"
+    "December"
+  ]
+  missingLink = kid.missing_url
   html = """
   #{styles}
   <div class="#{wrapperClass.slice(1)}">
@@ -111,20 +127,21 @@ template = (kid) ->
       <div class="info">
         <h3>#{kid.full_name}</h3>
         <h4>#{ageString}</h4>
-        <h4>Missing From #{kid.missing_city}, #{kid.missing_state}<br>since #{kid.missing_date}</h4>
+        <h4>Missing From #{kid.missing_city}, #{kid.missing_state}
+        <br>since #{months[month]} #{day}, #{year}</h4>
         <h4>Have You Seen This Person?</h4>
         <br>
-        <a href="#" class="btn btn-yes">Yes</a><a href="#" onclick="showKid()" class="btn">No</a>
+        <a href="#{missingLink}" class="btn btn-yes">Yes</a><a href="#" onclick="showKid(#{kid.id});return false;" class="btn">No</a>
       </div>
       <div class="more-info" onclick="document.getElementById('kids404').className = 'flipped';">
         <span>?</span>
       </div>
     </div>
     <div class="back">
-      <p>More Information!</p>
-      <p>This person was first reported missing after leaving school in Tacoma, WA.</p>
+      <p>This missing persons service is brought to you by <a href="http://404kids.org">404kids</a>. If you would like to help find missing people,
+      consider adding this widget to your site.</p>
       <p>If you have any information report, please
-      <a href="#">fill out a report</a>. It takes less than 60 seconds.</p>
+      <a href="#{missingLink}">fill out a report</a>. It takes less than 60 seconds.</p>
       <div class="more-info" onclick="document.getElementById('kids404').className = '';">
         <span>x</span>
       </div>
@@ -139,9 +156,9 @@ ajax = (opts) ->
       opts.done()
   xml.open("GET", opts.url, true)
   xml.send()
-window.showKid = ->
+window.showKid = (exclude=null) ->
   ajax
-    url: "http://fouroh4kids.herokuapp.com/api/random"
+    url: "http://404kids.org/api/random?exclude=#{exclude}"
     done: ->
       data = JSON.parse(xml.responseText)
       kid = data.kid
@@ -152,7 +169,6 @@ window.showKid = ->
       script = document.getElementById("404kids-script")
       body = document.getElementsByTagName('body')[0]
       body.insertBefore(container, script)
-  false
 showKid()
 
 

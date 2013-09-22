@@ -49,6 +49,7 @@ end
 gem 'geocoder'
 gem "active_model_serializers"
 gem 's3'
+gem 'afterparty', github: 'hstove/afterparty'
 
 group :test do
   gem 'rspec-rails'
