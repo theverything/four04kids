@@ -6,10 +6,15 @@ class ApplicationController < ActionController::Base
   private
 
   def location
-    if Rails.env.test? || Rails.env.development?
-      @location ||= Geocoder.search("50.78.167.161").first
+    if params[:location].blank?
+      if Rails.env.test? || Rails.env.development?
+        @location ||= Geocoder.search("50.78.167.161").first
+      else
+        @location ||= request.location
+      end
     else
-      @location ||= request.location
+      params[:location].each {|l| l = l.to_i } if params[:location].is_a? Array
+      @location ||= Geocoder.search(params[:location]).first
     end
   end
 end

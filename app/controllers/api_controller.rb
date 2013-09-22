@@ -1,19 +1,17 @@
 class ApiController < ApplicationController
   before_filter :set_access_control_headers
   def random
-    unless params[:location].blank?
-      @location_query = params[:location]
-    else
-      @location_query = [location.latitude, location.longitude]
-    end
     if location.country_code == "US"
-      query = Kid.near(@location_query, 500)
+      @limit = params[:limit].blank? ? 500 : params[:limit].to_i
+      @location_query = [location.latitude, location.longitude]
+      @query = Kid.near(@location_query, @limit)
     else
-      query = Kid.all
+      @query = Kid.all
     end
-    query = query.where("age > 0")
-    query = query.where("id != ?", params[:exclude].to_i) if params[:exclude]
-    @kid = query.to_a.sample
+    @query = @query.where("age > 0")
+    @query = @query.where("id != ?", params[:exclude].to_i) if params[:exclude]
+    @query = @query.order("RANDOM()").limit(1)
+    @kid = @query.first
     job = Afterparty::BasicJob.new @kid, :increment
     Rails.configuration.queue << job
     render json: @kid, meta: {location: location.data}

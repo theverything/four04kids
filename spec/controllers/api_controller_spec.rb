@@ -37,6 +37,11 @@ describe ApiController do
       location["metro_code"].should eq("819")
       location["areacode"].should eq("425")
     end
+
+    it "allows a `limit` parameter" do
+      get 'random', {limit: "10"}
+      assigns(:limit).should eq(10)
+    end
   end
 
   describe "GET 'show'" do
