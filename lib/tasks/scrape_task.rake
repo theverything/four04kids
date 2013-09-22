@@ -35,22 +35,22 @@ namespace :scrape do
         page = http.get("/missingkids/servlet/JSONDataServlet?action=publicSearch&searchLang=en_US&goToPage=#{i + 1}", cookie)
         kids = JSON.parse(page.body)
         kids['persons'].each do |kid|
-          nk = Kid.new
-          nk.case_number = kid['caseNumber']
-          nk.org_prefix = kid['orgPrefix']
-          nk.first_name = kid['firstName'].capitalize
-          nk.last_name = kid['lastName'].capitalize
-          nk.middle_name = kid['middleName'].capitalize
-          nk.missing_city = kid['missingCity'].capitalize
-          nk.missing_state = kid['missingState'].upcase
-          nk.missing_county = kid['missingCounty'].capitalize
-          nk.missing_country = kid['missingCountry'].upcase
-          nk.missing_date = kid['missingDate'].blank? ? Date.new(1900,1,1) : DateTime.parse(kid['missingDate'])
-          nk.age = kid['age']
-          nk.thumbnail = kid['hasThumbnail']
-          nk.poster = kid['hasPoster']
-          nk.thumbnail_url = kid['thumbnailUrl']
-          if nk.save
+          attributes = {}
+          attributes[:case_number] = kid['caseNumber']
+          attributes[:org_prefix] = kid['orgPrefix']
+          attributes[:first_name] = kid['firstName'].capitalize
+          attributes[:last_name] = kid['lastName'].capitalize
+          attributes[:middle_name] = kid['middleName'].capitalize
+          attributes[:missing_city] = kid['missingCity'].capitalize
+          attributes[:missing_state] = kid['missingState'].upcase
+          attributes[:missing_county] = kid['missingCounty'].capitalize
+          attributes[:missing_country] = kid['missingCountry'].upcase
+          attributes[:missing_date] = kid['missingDate'].blank? ? Date.new(1900,1,1) : DateTime.parse(kid['missingDate'])
+          attributes[:age] = kid['age']
+          attributes[:thumbnail] = kid['hasThumbnail']
+          attributes[:poster] = kid['hasPoster']
+          attributes[:thumbnail_url] = kid['thumbnailUrl']
+          if Kid.find_or_create_by(attributes)
             print "."
           else
             print "F"
