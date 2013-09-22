@@ -10,6 +10,8 @@ class Kid < ActiveRecord::Base
   geocoded_by :address
   before_save :geocode, :if => :address_changed?
 
+  default_scope -> { where("age > 0") }
+
   def full_name
     "#{self.first_name} #{self.middle_name} #{last_name}"
   end
@@ -49,5 +51,9 @@ class Kid < ActiveRecord::Base
     self.views ||= 0
     self.views += by
     self.save
+  end
+
+  def description
+    "#{full_name.upcase}, AGE: #{age}, MISSING: #{missing_date}"
   end
 end

@@ -13,7 +13,10 @@
   height: 160px;
 }
 body {
-  background-color: gray;
+  background-color: #333;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+             sans-serif;
+  font-weight: 100;
 }
 
 img {
@@ -51,24 +54,21 @@ img {
 
 .orange-block {
   display: inline-block;
-  width: 300px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
   background-color: Orange;
   margin: 0;
   float: left;
+  position: relative;
 }
 
 .logo {
-  line-height: 300px;
   font-size: 2em;
   text-align: center;
-}
-
-footer {
-  height: 100px;
-  line-height: 100px;
-  background-color: LightGray;
-  padding: 0 20px;
+  span {
+    position: relative;
+    top: 60px;
+  }
 }
 
 @mixin orange_callout {
@@ -119,5 +119,108 @@ footer {
   @include info_box;
 }
 
+.block {
+  width: 150px;
+  height: 150px;
+  background-size: 150px;
+  background-position: 0 -10px;
+  float: left;
+  &.first-block {
+    background-image: url('addicon.jpg');
+    background-position: 0;
+  } &.last-block {
+    background-image: url('logo.png');
+    background-position: 0;
+  }
+}
 
+.titlebar {
+  h2 {
+    margin: 0px;
+    color: white;
+    font-weight: 100;
+    text-transform: uppercase;
+    span {
+      color: #ff6d00;
+      font-weight: 500;
+    }
+  }
+}
 
+.news-row {
+  background-color: #ccc;
+  padding: 10px 0px;
+  .newsfeed {
+    letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-transform: uppercase;
+    span {
+      position: relative;
+      left: 0px;
+    }
+  }
+}
+
+footer {
+  border-bottom: 3px solid #ff6d00;
+  position: relative;
+  ul.footer-nav {
+    list-style: none;
+    height: 100%;
+    padding: 0;
+    li {
+      float: left;
+      padding: 4px 45px;
+      margin: 0 20px;
+      height: 100%;
+      &.active {
+        background-color: #ff6d00;
+      }
+      a {
+        color: white;
+        font-weight: 100;
+        text-transform: uppercase;
+      }
+    }
+  }
+  ul.social {
+    list-style: none;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    li {
+      width: 30px;
+      height: 30px;
+      float: left;
+      margin: 0 5px;
+      a {
+        height: 30px;
+        width: 30px;
+        display: block;
+        background-size: 30px;
+        -webkit-filter: grayscale(100%);
+        -webkit-transition: all 0.6s;
+        transition: all 0.6s;
+        &.facebook{
+          background-image: url('facebookgray.png');
+          &:hover {
+            background-image: url('facebookorange.png');
+          }
+        } &.google{
+          background-image: url('googlegray.png');
+          &:hover {
+            background-image: url('googleorange.png');
+          }
+        } &.twitter{
+          background-image: url('twittergray.png');
+          &:hover {
+            background-image: url('twitterorange.png');
+          }
+        } &:hover {
+          -webkit-filter: grayscale(0%);
+        }
+      }
+    }
+  }
+}
