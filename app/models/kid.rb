@@ -44,4 +44,10 @@ class Kid < ActiveRecord::Base
   def missing_url
     "http://www.missingkids.com/missingkids/servlet/PubCaseSearchServlet?act=viewPoster&caseNum=#{self.case_number}&orgPrefix=#{self.org_prefix}"
   end
+
+  def increment(by = 1)
+    self.views ||= 0
+    self.views += by
+    self.save
+  end
 end

@@ -1,4 +1,5 @@
 Four04kids::Application.routes.draw do
+  mount Afterparty::Engine, at: "afterparty", as: "afterparty_engine"
   root 'static_pages#home'
 
   get 'about' => 'static_pages#about', as: :about
