@@ -139,8 +139,8 @@ template = (kid) ->
     </div>
     <div class="back">
       <p>This missing persons service is brought to you by <a href="http://404kids.org">404kids</a>. If you would like to help find missing people,
-      consider adding this widget to your site.</p>
-      <p>If you have any information report, please
+      please add this widget to your site.</p>
+      <p>If you have any information about missing children, please
       <a href="#{missingLink}">fill out a report</a>. It takes less than 60 seconds.</p>
       <div class="more-info" onclick="document.getElementById('kids404').className = '';">
         <span>x</span>
