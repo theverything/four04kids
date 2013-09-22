@@ -111,7 +111,9 @@ styles = """
   }
 </style>
 """
-template = (kid) ->
+template = (data) ->
+  kid = data.kid
+  location = data.meta.location
   missing = kid.missing_date
   year = parseInt(missing.slice(0,4), 10)
   month = parseInt(missing.slice(5,7), 10)
@@ -137,7 +139,7 @@ template = (kid) ->
   #{styles}
   <div class="#{wrapperClass.slice(1)}">
     <div class="front">
-      <h2>Missing Person Near <span class="geo-city">Seattle</span></h2>
+      <h2>Missing Person Near <span class="geo-city">#{location.city}</span></h2>
       <div class="image">
         <img src="http://missingkids.com/#{kid.image_url}">
       </div>
@@ -182,8 +184,7 @@ window.showKid = (exclude=null) ->
     url: "http://404kids.org/api/random?exclude=#{exclude}"
     done: ->
       data = JSON.parse(xml.responseText)
-      kid = data.kid
-      html = template(kid)
+      html = template(data)
       container = document.getElementById("kids404") || document.createElement('div')
       container.id = "kids404"
       container.innerHTML = html
