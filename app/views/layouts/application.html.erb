@@ -47,10 +47,10 @@
     </div>
     <footer class="row">
       <ul class="footer-nav">
-        <li class="active"><a href="/404">About</a></li>
-        <li><a href="/404">Stories</a></li>
-        <li><a href="/404">Donate</a></li>
-        <li><a href="/404">How To</a></li>
+        <li class="<%= params[:action] == "home" ? "active" : "" %>"><a href="<%= root_path(anchor: "main") %>">About</a></li>
+        <li class="<%= params[:action] == "stories" ? "active" : "" %>"><a href="<%= stories_path(anchor: "main") %>">Stories</a></li>
+        <li class="<%= params[:action] == "donate" ? "active" : "" %>"><a href="<%= donate_path(anchor: "main") %>">Donate</a></li>
+        <li class="<%= params[:action] == "docs" ? "active" : "" %>"><a href="<%= docs_path(anchor: "main") %>">How To</a></li>
       </ul>
       <ul class="social">
         <li><a href="/404" class="google"></a></li>
@@ -60,8 +60,11 @@
       </ul>
     </footer>
 
-    <div class="row main">
-      <%= yield %>
+    <div class="row" id="main">
+      <div class="large-12 columns main">
+        <%= yield %>
+        <a class="add-widget" href="/404">Add Our Widget</a>
+      </div>
     </div>
 
 
