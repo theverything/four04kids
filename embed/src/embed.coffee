@@ -116,6 +116,7 @@ template = (kid) ->
     "November"
     "December"
   ]
+  missingLink = kid.missing_url
   html = """
   #{styles}
   <div class="#{wrapperClass.slice(1)}">
@@ -130,17 +131,17 @@ template = (kid) ->
         <br>since #{months[month]} #{day}, #{year}</h4>
         <h4>Have You Seen This Person?</h4>
         <br>
-        <a href="#" class="btn btn-yes">Yes</a><a href="#" onclick="showKid(#{kid.id})" class="btn">No</a>
+        <a href="#{missingLink}" class="btn btn-yes">Yes</a><a href="#" onclick="showKid(#{kid.id});return false;" class="btn">No</a>
       </div>
       <div class="more-info" onclick="document.getElementById('kids404').className = 'flipped';">
         <span>?</span>
       </div>
     </div>
     <div class="back">
-      <p>More Information!</p>
-      <p>This person was first reported missing after leaving school in Tacoma, WA.</p>
+      <p>This missing persons service is brought to you by <a href="#">404kids</a>. If you would like to help find missing people,
+      consider adding this widget to your site.</p>
       <p>If you have any information report, please
-      <a href="#">fill out a report</a>. It takes less than 60 seconds.</p>
+      <a href="#{missingLink}">fill out a report</a>. It takes less than 60 seconds.</p>
       <div class="more-info" onclick="document.getElementById('kids404').className = '';">
         <span>x</span>
       </div>
@@ -168,7 +169,6 @@ window.showKid = (exclude=null) ->
       script = document.getElementById("404kids-script")
       body = document.getElementsByTagName('body')[0]
       body.insertBefore(container, script)
-  false
 showKid()
 
 

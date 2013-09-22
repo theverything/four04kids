@@ -40,4 +40,8 @@ class Kid < ActiveRecord::Base
       self.image_url = self.thumbnail_url.gsub(/t\./, ".")
     end
   end
+
+  def missing_url
+    "http://www.missingkids.com/missingkids/servlet/PubCaseSearchServlet?act=viewPoster&caseNum=#{self.case_number}&orgPrefix=#{self.org_prefix}"
+  end
 end
