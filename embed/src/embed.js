@@ -17,7 +17,7 @@
     ageString = kid.age ? "" + kid.age + " Years Old" : "Age Not Provided";
     months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     missingLink = kid.missing_url;
-    return html = "" + styles + "\n<div class=\"" + (wrapperClass.slice(1)) + "\">\n  <div class=\"front\">\n    <div class=\"image\">\n      <img src=\"http://missingkids.com/" + kid.image_url + "\">\n    </div>\n    <div class=\"info\">\n      <h3>" + kid.full_name + "</h3>\n      <h4>" + ageString + "</h4>\n      <h4>Missing From " + kid.missing_city + ", " + kid.missing_state + "\n      <br>since " + months[month] + " " + day + ", " + year + "</h4>\n      <h4>Have You Seen This Person?</h4>\n      <br>\n      <a href=\"" + missingLink + "\" class=\"btn btn-yes\">Yes</a><a href=\"#\" onclick=\"showKid(" + kid.id + ");return false;\" class=\"btn\">No</a>\n    </div>\n    <div class=\"more-info\" onclick=\"document.getElementById('kids404').className = 'flipped';\">\n      <span>?</span>\n    </div>\n  </div>\n  <div class=\"back\">\n    <p>This missing persons service is brought to you by <a href=\"#\">404kids</a>. If you would like to help find missing people,\n    consider adding this widget to your site.</p>\n    <p>If you have any information report, please\n    <a href=\"" + missingLink + "\">fill out a report</a>. It takes less than 60 seconds.</p>\n    <div class=\"more-info\" onclick=\"document.getElementById('kids404').className = '';\">\n      <span>x</span>\n    </div>\n  </div>\n</div>";
+    return html = "" + styles + "\n<div class=\"" + (wrapperClass.slice(1)) + "\">\n  <div class=\"front\">\n    <div class=\"image\">\n      <img src=\"http://missingkids.com/" + kid.image_url + "\">\n    </div>\n    <div class=\"info\">\n      <h3>" + kid.full_name + "</h3>\n      <h4>" + ageString + "</h4>\n      <h4>Missing From " + kid.missing_city + ", " + kid.missing_state + "\n      <br>since " + months[month] + " " + day + ", " + year + "</h4>\n      <h4>Have You Seen This Person?</h4>\n      <br>\n      <a href=\"" + missingLink + "\" class=\"btn btn-yes\">Yes</a><a href=\"#\" onclick=\"showKid(" + kid.id + ");return false;\" class=\"btn\">No</a>\n    </div>\n    <div class=\"more-info\" onclick=\"document.getElementById('kids404').className = 'flipped';\">\n      <span>?</span>\n    </div>\n  </div>\n  <div class=\"back\">\n    <p>This missing persons service is brought to you by <a href=\"http://404kids.org\">404kids</a>. If you would like to help find missing people,\n    consider adding this widget to your site.</p>\n    <p>If you have any information report, please\n    <a href=\"" + missingLink + "\">fill out a report</a>. It takes less than 60 seconds.</p>\n    <div class=\"more-info\" onclick=\"document.getElementById('kids404').className = '';\">\n      <span>x</span>\n    </div>\n  </div>\n</div>";
   };
 
   xml = null;
@@ -38,7 +38,7 @@
       exclude = null;
     }
     return ajax({
-      url: "http://fouroh4kids.herokuapp.com/api/random?exclude=" + exclude,
+      url: "http://404kids.org/api/random?exclude=" + exclude,
       done: function() {
         var body, container, data, html, kid, script;
         data = JSON.parse(xml.responseText);

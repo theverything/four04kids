@@ -138,7 +138,7 @@ template = (kid) ->
       </div>
     </div>
     <div class="back">
-      <p>This missing persons service is brought to you by <a href="#">404kids</a>. If you would like to help find missing people,
+      <p>This missing persons service is brought to you by <a href="http://404kids.org">404kids</a>. If you would like to help find missing people,
       consider adding this widget to your site.</p>
       <p>If you have any information report, please
       <a href="#{missingLink}">fill out a report</a>. It takes less than 60 seconds.</p>
@@ -158,7 +158,7 @@ ajax = (opts) ->
   xml.send()
 window.showKid = (exclude=null) ->
   ajax
-    url: "http://fouroh4kids.herokuapp.com/api/random?exclude=#{exclude}"
+    url: "http://404kids.org/api/random?exclude=#{exclude}"
     done: ->
       data = JSON.parse(xml.responseText)
       kid = data.kid

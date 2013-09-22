@@ -6,6 +6,10 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 gem 'rails_12factor'
 
+# Caching
+gem 'memcachier'
+gem 'dalli'
+
 # Use postgresql as the database for Active Record
 group :production do
   gem 'pg'
@@ -45,6 +49,7 @@ end
 gem 'geocoder'
 gem "active_model_serializers"
 gem 's3'
+gem 'afterparty', github: 'hstove/afterparty'
 
 group :test do
   gem 'rspec-rails'
