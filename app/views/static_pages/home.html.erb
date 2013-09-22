@@ -1,1 +1,45 @@
-home
+<div class="row">
+  <div class="large-12 columns">
+    <div class="home-images">
+      <div class="orange-block"></div>
+      <img class="bw" src="http://placekitten.com/300/300" alt="" />
+      <img class="bw" src="http://placekitten.com/300/300" alt="" />
+      <img class="bw" src="http://placekitten.com/300/300" alt="" />
+      <img class="bw" src="http://placekitten.com/300/300" alt="" />
+      <img class="bw" src="http://placekitten.com/300/300" alt="" />
+      <img class="bw" src="http://placekitten.com/300/300" alt="" />
+      <img class="bw" src="http://placekitten.com/300/300" alt="" />
+      <img class="bw last-row" src="http://placekitten.com/300/300" alt="" />
+      <img class="bw last-row" src="http://placekitten.com/300/300" alt="" />
+      <img class="bw last-row" src="http://placekitten.com/300/300" alt="" />
+      <div class="orange-block logo">404 Kids</div>
+    </div>
+    <div class="popup"></div>
+  </div>
+</div>
+<footer class="row">
+  <div class="large-12 columns">
+    stuff in the footer
+  </div>
+</footer>
+
+<% content_for :js do %>
+  <script>
+    $(document).ready(function() {
+      $('img').on('mouseover', function() {
+          var $this = $(this);
+          var position = $(this).position();
+          if ($this.hasClass("last-row")) {
+            $('.popup').css({ top: position.top - 300, left: position.left }).append("<div class='content'>Hello</div>").hide().fadeIn('fast');
+          }
+          else {
+            $('.popup').css({ top: position.top + 300, left: position.left }).append("<div class='content'>Hello</div>").hide().fadeIn('fast');
+          }
+      });
+
+      $('img').on('mouseout', function() {
+          $('.content').hide().remove();
+      });
+    });
+  </script>
+<% end %>
