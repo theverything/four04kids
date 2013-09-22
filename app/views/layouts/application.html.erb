@@ -6,11 +6,8 @@
 <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
   <head>
   	<meta charset="utf-8" />
-
   	<!-- Uncomment to make IE8 render like IE7 -->
   	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
-
-  	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   	<title><%= content_for?(:title) ? yield(:title) : "404kids - Missing Kids on Missing Pages" %></title>
@@ -25,7 +22,8 @@
       <div class="home-images">
         <div class="large-12 columns titlebar">
           <h2>Missing Persons Near
-            <span><%= request.location.city.blank? ? "Seattle" : request.location.city %></span>
+          <input value="<%= request_city %>">
+          </h2>
         </div>
         <div class="large-12 columns">
           <div class="first-block block"></div>

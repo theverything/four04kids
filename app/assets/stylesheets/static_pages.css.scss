@@ -144,9 +144,21 @@ img {
     color: white;
     font-weight: 100;
     text-transform: uppercase;
-    span {
+    input {
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+             sans-serif;
       color: #ff6d00;
       font-weight: 500;
+      font-size: 37px;
+      border: none;
+      background: none;
+      text-transform: uppercase;
+      font-weight: 100;
+      outline: 0;
+      &:focus {
+        box-shadow: none;
+        border-bottom: 1px solid #ff6d00
+      }
     }
   }
 }

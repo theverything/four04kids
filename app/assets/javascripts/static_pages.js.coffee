@@ -31,3 +31,8 @@ $(document).ready ->
   , ->
     $('.popup').hide().find('.content').remove()
     console.log 'hide'
+
+  $('.titlebar input').keypress (e) ->
+    if e.keyCode == 13
+      location = $(e.target).val()
+      document.location = "/?location=#{location}"

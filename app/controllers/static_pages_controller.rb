@@ -1,6 +1,13 @@
 class StaticPagesController < ApplicationController
   def home
-    @kids = Kid.limit(50).near([location.latitude, location.longitude], 500)
+    if params[:location].blank?
+      @location_query = [location.latitude, location.longitude]
+      @city = request.location.city
+    else
+      @location_query = params[:location]
+      @city = params[:city]
+    end
+    @kids = Kid.limit(50).near(@location_query, 500)
     @kids = @kids.to_a.slice(0,30).shuffle
   end
 
