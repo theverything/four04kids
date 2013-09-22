@@ -17,7 +17,6 @@ guard 'haml' do
   watch(/^.+(\.haml)/)
 end
 
-guard 'livereload' do
-  watch("src/embed.js")
-  watch("demo.html")
+guard 'uglify', :destination_file => "src/embed.js" do
+  watch (%r{src/embed.js})
 end
