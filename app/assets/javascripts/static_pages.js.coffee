@@ -26,9 +26,12 @@ $(document).ready ->
     $popup.show()
     contentHeight = parseInt($popup.find('.content').css('height').replace('px',''))
     movement = if $this.hasClass('last-row') then -contentHeight else 150
-    $popup.css
-      top: position.top + movement
-      left: position.left
+    # if we're in a partial, display to the right of the block
+    [movementProp, sameProp] = if data.partial then ['left', 'top'] else ['top', 'left']
+    css = {}
+    css[movementProp] = position[movementProp] + movement
+    css[sameProp] = position[sameProp]
+    $popup.css css
     console.log 'show'
   , ->
     $('.popup').hide().find('.content').remove()

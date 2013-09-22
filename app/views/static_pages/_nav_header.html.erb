@@ -8,11 +8,11 @@
     <div class="large-12 columns">
       <div class="first-block block"></div>
       <% @kids.each_with_index do |kid, index| %>
-        <% clazz = index >= 23 ? " last-row" : '' %>
+        <% clazz = index >= 5 ? " last-row" : '' %>
         <a class="bw block<%= clazz %>" style="background-image: url('http://missingkids.com/<%=kid.image_url%>');"
           data-name="<%= "#{kid.first_name} #{kid.last_name}" %>" data-location="<%= kid.create_full_address %>"
           href="<%= kid.missing_url %>" target="_blank" data-timeago="<%= time_ago_in_words kid.missing_date %>"
-          data-age="<%= kid.age %>"
+          data-age="<%= kid.age %>" data-partial="true"
           ></a>
       <% end %>
       <div class="block logo last-block"></div>
