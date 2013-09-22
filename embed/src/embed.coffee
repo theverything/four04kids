@@ -20,11 +20,21 @@ styles = """
     padding: 10px 10px 23px 10px;
     border-radius: 3px;
     position: relative;
-    height: 190px;
+    height: 235px;
     transition: 0.5s;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
+  }
+  #{wrapperClass} .front h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 200;
+  }
+  #{wrapperClass} .geo-city {
+    font-weight: 500;
+    color: #FF6D00;
   }
   #{wrapperClass} .image {
     float: left;
@@ -44,11 +54,17 @@ styles = """
   #{wrapperClass} .info h3, #{wrapperClass} .info h4 {
     margin: 0px 0 10px;
   }
+  #{wrapperClass} .info h3 {
+    font-weight: bold;
+  }
+  #{wrapperClass} .info .question {
+    font-weight: bold;
+  }
   #{wrapperClass} .btn {
     text-decoration: none;
     color: white;
     padding: 10px 34px;
-    background-color: #ccc;
+    background-color: #FF6D00;
     margin-right: 10px;
     border-radius: 3px;
   }
@@ -58,7 +74,7 @@ styles = """
   #{wrapperClass} .more-info {
     position: absolute;
     right: 0px;
-    bottom: 6px;
+    bottom: -35px;
     cursor: pointer;
   }
   #{wrapperClass} .more-info span {
@@ -76,7 +92,7 @@ styles = """
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     position: absolute;
-    top: 10px;
+    top: 15px;
     left: 10px;
     width: #{width}px;
     height: 200px;
@@ -121,27 +137,32 @@ template = (kid) ->
   #{styles}
   <div class="#{wrapperClass.slice(1)}">
     <div class="front">
+      <h2>Missing Person Near <span class="geo-city">Seattle</span></h2>
       <div class="image">
         <img src="http://missingkids.com/#{kid.image_url}">
       </div>
       <div class="info">
         <h3>#{kid.full_name}</h3>
-        <h4>#{ageString}</h4>
+        <h4>Current Age #{ageString}</h4>
         <h4>Missing From #{kid.missing_city}, #{kid.missing_state}
         <br>since #{months[month]} #{day}, #{year}</h4>
-        <h4>Have You Seen This Person?</h4>
+        <h4 class="question">Have You Seen This Person?</h4>
         <br>
-        <a href="#{missingLink}" class="btn btn-yes">Yes</a><a href="#" onclick="showKid(#{kid.id});return false;" class="btn">No</a>
+        <a href="#{missingLink}" class="btn">SEEN</a>
+        <a href="#" onclick="showKid(#{kid.id});return false;" class="btn">NO</a>
       </div>
       <div class="more-info" onclick="document.getElementById('kids404').className = 'flipped';">
         <span>?</span>
       </div>
     </div>
     <div class="back">
-      <p>This missing persons service is brought to you by <a href="http://404kids.org">404kids</a>. If you would like to help find missing people,
-      please add this widget to your site.</p>
-      <p>If you have any information about missing children, please
-      <a href="#{missingLink}">fill out a report</a>. It takes less than 60 seconds.</p>
+      <p>This service is brought to you by <a href="http://404kids.org">404kids</a>, and is intended to help reclaim
+      the visibility and independence of missing children.</p>
+
+      <p>If you would like to aid in
+      the search for missing and exploited adolescents, please <a href="http://404kids.org/docs">add this widget to your site</a>.</p>
+
+      <p>If you have any information to report on one of our featured subjects, we urge you to <a href="#{missingLink}">fill out a report</a> immediately.</p>
       <div class="more-info" onclick="document.getElementById('kids404').className = '';">
         <span>x</span>
       </div>
