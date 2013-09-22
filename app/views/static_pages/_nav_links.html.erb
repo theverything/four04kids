@@ -1,0 +1,5 @@
+<li class="<%= params[:action] == "home" ? "active" : "" %>"><a href="<%= root_path(anchor: "main") %>">Home</a></li>
+<li class="<%= params[:action] == "about" ? "active" : "" %>"><a href="<%= about_path(anchor: "main") %>">About</a></li>
+<li class="<%= params[:action] == "stories" ? "active" : "" %>"><a href="<%= stories_path(anchor: "main") %>">Stories</a></li>
+<li class="<%= params[:action] == "donate" ? "active" : "" %>"><a href="<%= donate_path(anchor: "main") %>">Donate</a></li>
+<li class="<%= params[:action] == "docs" ? "active" : "" %>"><a href="<%= docs_path(anchor: "main") %>">Docs</a></li>

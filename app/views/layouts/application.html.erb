@@ -16,57 +16,9 @@
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
   </head>
-
   <body>
-    <div class="row">
-      <div class="home-images">
-        <div class="large-12 columns titlebar">
-          <h2>Missing Persons Near
-          <input value="<%= request_city %>">
-          </h2>
-        </div>
-        <div class="large-12 columns">
-          <div class="first-block block"></div>
-          <% @kids.each_with_index do |kid, index| %>
-            <% clazz = index >= 23 ? " last-row" : '' %>
-            <a class="bw block<%= clazz %>" style="background-image: url('http://missingkids.com/<%=kid.image_url%>');"
-              data-name="<%= "#{kid.first_name} #{kid.last_name}" %>" data-location="<%= kid.create_full_address %>"
-              href="<%= kid.missing_url %>" target="_blank" data-timeago="<%= time_ago_in_words kid.missing_date %>"
-              data-age="<%= kid.age %>"
-              ></a>
-          <% end %>
-          <div class="block logo last-block"></div>
-          <div class="popup"></div>
-        </div>
-      </div>
-    </div>
-    <div class="row news-row">
-      <div class="large-12 columns newsfeed">
-        <span><%= @kids.collect(&:description).join(" // ") %></span>
-      </div>
-    </div>
-    <footer class="row">
-      <ul class="footer-nav">
-        <li class="<%= params[:action] == "home" ? "active" : "" %>"><a href="<%= root_path(anchor: "main") %>">About</a></li>
-        <li class="<%= params[:action] == "stories" ? "active" : "" %>"><a href="<%= stories_path(anchor: "main") %>">Stories</a></li>
-        <li class="<%= params[:action] == "donate" ? "active" : "" %>"><a href="<%= donate_path(anchor: "main") %>">Donate</a></li>
-        <li class="<%= params[:action] == "docs" ? "active" : "" %>"><a href="<%= docs_path(anchor: "main") %>">How To</a></li>
-      </ul>
-      <ul class="social">
-        <li><a href="/404" class="google"></a></li>
-        <li><a href="/404" class="twitter"></a></li>
-        <li><a href="/404" class="facebook"></a></li>
-        <li><a href="https://github.com/theverything/four04kids" class="github"></a></li>
-      </ul>
-    </footer>
 
-    <div class="row" id="main">
-      <div class="large-12 columns main">
-        <%= yield %>
-        <a class="add-widget" href="/404">Add Our Widget</a>
-      </div>
-    </div>
-
+    <%= yield %>
 
     <%= javascript_include_tag "application" %>
     <%= content_for :js %>
