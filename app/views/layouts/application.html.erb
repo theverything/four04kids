@@ -30,8 +30,9 @@
           <% @kids.each_with_index do |kid, index| %>
             <% clazz = index >= 23 ? " last-row" : '' %>
             <a class="bw block<%= clazz %>" style="background-image: url('http://missingkids.com/<%=kid.image_url%>');"
-              data-name="<%= kid.full_name %>" data-location="<%= kid.create_full_address %>"
-              href="<%= kid.missing_url %>" target="_blank"
+              data-name="<%= "#{kid.first_name} #{kid.last_name}" %>" data-location="<%= kid.create_full_address %>"
+              href="<%= kid.missing_url %>" target="_blank" data-timeago="<%= time_ago_in_words kid.missing_date %>"
+              data-age="<%= kid.age %>"
               ></a>
           <% end %>
           <div class="block logo last-block"></div>

@@ -45,6 +45,8 @@ img {
     background-color: #ff6d00;
     z-index: 999;
     padding: 20px;
+    color: white;
+    overflow: hidden;
     .name {
       font-size: 14px;
       line-height: 14px;
@@ -239,10 +241,22 @@ footer {
 .main {
   background-color: #ccc;
   .description {
-    padding: 20px;
+    padding: 50px 300px;
+    font-size: 24px;
   }
 }
 
-#kids404 {
-  background-color: black;
+.add-widget {
+  display: block;
+  margin: 0px auto;
+  padding: 14px 45px;
+  text-align: center;
+  background-color: #ff6d00;
+  color: white;
+  font-weight: 500;
+  width: 300px;
+  border: 1px solid #333;
+  &:hover {
+    color: #ccc
+  }
 }

@@ -19,6 +19,8 @@ $(document).ready ->
     <div class='content'>
       <p class="name">#{data.name}</p>
       <p class="name">#{data.location}</p>
+      <p class="name">#{data.timeago} ago</p>
+      <p class="name">Age #{data.age}</p>
     </div>
     """
     $popup.show()
