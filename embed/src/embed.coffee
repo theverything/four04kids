@@ -116,7 +116,7 @@ template = (kid) ->
     "November"
     "December"
   ]
-  missingLink = "http://www.missingkids.com/missingkids/servlet/PubCaseSearchServlet?act=viewPoster&caseNum=#{kid.case_number}&orgPrefix=#{kid.org_prefix}"
+  missingLink = kid.missing_url
   html = """
   #{styles}
   <div class="#{wrapperClass.slice(1)}">
