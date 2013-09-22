@@ -126,10 +126,10 @@ img {
   background-position: 0 -10px;
   float: left;
   &.first-block {
-    background-image: url('addicon.jpg');
+    background-image: image-url('addicon.jpg');
     background-position: 0;
   } &.last-block {
-    background-image: url('logo.png');
+    background-image: image-url('logo.png');
     background-position: 0;
   }
 }
@@ -203,19 +203,19 @@ footer {
         -webkit-transition: all 0.6s;
         transition: all 0.6s;
         &.facebook{
-          background-image: url('facebookgray.png');
+          background-image: image-url('facebookgray.png');
           &:hover {
-            background-image: url('facebookorange.png');
+            background-image: image-url('facebookorange.png');
           }
         } &.google{
-          background-image: url('googlegray.png');
+          background-image: image-url('googlegray.png');
           &:hover {
-            background-image: url('googleorange.png');
+            background-image: image-url('googleorange.png');
           }
         } &.twitter{
-          background-image: url('twittergray.png');
+          background-image: image-url('twittergray.png');
           &:hover {
-            background-image: url('twitterorange.png');
+            background-image: image-url('twitterorange.png');
           }
         } &:hover {
           -webkit-filter: grayscale(0%);
