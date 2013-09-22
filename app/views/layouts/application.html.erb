@@ -21,6 +21,44 @@
   </head>
 
   <body>
+    <div class="row">
+      <div class="home-images">
+        <div class="large-12 columns titlebar">
+          <h2>Missing Persons Near
+            <span><%= request.location.city.blank? ? "Seattle" : request.location.city %></span>
+        </div>
+        <div class="large-12 columns">
+          <div class="first-block block"></div>
+          <% @kids.each_with_index do |kid, index| %>
+            <% clazz = index >= 23 ? " last-row" : '' %>
+            <a class="bw block<%= clazz %>" style="background-image: url('http://missingkids.com/<%=kid.image_url%>');"
+              data-name="<%= kid.full_name %>" data-location="<%= kid.create_full_address %>"
+              href="<%= kid.missing_url %>" target="_blank"
+              ></a>
+          <% end %>
+          <div class="block logo last-block"></div>
+          <div class="popup"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row news-row">
+      <div class="large-12 columns newsfeed">
+        <span><%= @kids.collect(&:description).join(" // ") %></span>
+      </div>
+    </div>
+    <footer class="row">
+      <ul class="footer-nav">
+        <li class="active"><a href="/404">About</a></li>
+        <li><a href="/404">Stories</a></li>
+        <li><a href="/404">Donate</a></li>
+        <li><a href="/404">How To</a></li>
+      </ul>
+      <ul class="social">
+        <li><a href="/404" class="google"></a></li>
+        <li><a href="/404" class="twitter"></a></li>
+        <li><a href="/404" class="facebook"></a></li>
+      </ul>
+    </footer>
 
     <%= yield %>
 
