@@ -41,6 +41,7 @@ img {
   position: absolute;
   .content {
     width: 150px;
+    height: 150px;
     background-color: #ff6d00;
     z-index: 999;
     padding: 20px;
@@ -202,9 +203,6 @@ footer {
         width: 30px;
         display: block;
         background-size: 30px;
-        -webkit-filter: grayscale(100%);
-        -webkit-transition: all 0.6s;
-        transition: all 0.6s;
         &.facebook{
           background-image: image-url('facebookgray.png');
           &:hover {
@@ -220,8 +218,6 @@ footer {
           &:hover {
             background-image: image-url('twitterorange.png');
           }
-        } &:hover {
-          -webkit-filter: grayscale(0%);
         }
       }
     }
