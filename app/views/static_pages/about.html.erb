@@ -1,6 +1,37 @@
-<div class="name_box">
-  <p>
-    John</br>
-    Doe
-  </p>
-</div>
+<% @kids.each do |kid| %>
+  <div class="container">
+    <div class="kid_image image_<%= kid.id %>">
+      <style type="text/css">
+.image_<%= kid.id %>{
+  background-image:url("http://www.missingkids.com<%=kid.image_url%>");
+  background-size: 160px;
+}
+      </style>
+    </div>
+    /* this content should be added via javascript */
+    <%# <div class="name_box"> %>
+    <%#   <p> %>
+    <%#     John</br> %>
+    <%#     Doe %>
+    <%#   </p> %>
+    <%# </div> %>
+
+    <%# <div class="info_box"> %>
+    <%#   <p> %>
+    <%#     <span>lorem: <b>ipsum</b></span><br> %>
+    <%#     <span>lorem: <b>ipsum</b> </span><br> %>
+    <%#     <span>lorem: <b>ipsum</b></span> <br> %>
+    <%#     <span>lorem: <b>ipsum</b></span><br> %>
+    <%#     <span>lorem: <b>ipsum</b> </span><br> %>
+    <%#     <span>lorem: <b>ipsum</b></span> <br> %>
+    <%#   </p> %>
+    <%#   <p> %>
+    <%#     <span>lorem: <b>ipsum</b></span><br> %>
+    <%#     <span>lorem: <b>ipsum</b></span><br> %>
+    <%#     <span>lorem: <b>ipsum</b></span><br> %>
+    <%#     <span>lorem: <b>ipsum</b></span><br> %>
+    <%#     <span>lorem: <b>ipsum</b></span><br> %>
+    <%#   </p> %>
+    <%# </div> %>
+  </div>
+<% end %>

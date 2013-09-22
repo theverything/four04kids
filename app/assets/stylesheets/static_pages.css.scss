@@ -2,6 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.container {
+  position: relative;
+  float: left;
+}
+
+.kid_image {
+  float: left;
+  width: 160px;
+  height: 160px;
+}
+
 @mixin orange_callout {
   font-family: "Helvetica Neue";
   background-color: #ff6d00;
@@ -21,6 +32,34 @@
 }
 
 .name_box {
+  position: absolute;
+  right: 0px;
   @include name_callout;
 }
+
+@mixin standard_info {
+  font-family: "Helvetic Neue";
+  font-size: 16px;
+  color: #333;
+  background-color: #e6e6e6;
+}
+
+@mixin info_box {
+  @include standard_info;
+  position: absolute;
+  top: 160px;
+  width: 320px;
+  height: 160px;
+  p {
+    float: left;
+    width: 160px;
+  }
+}
+
+.info_box {
+  background-color: #e6e6e6;
+  @include info_box;
+}
+
+
 
