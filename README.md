@@ -20,7 +20,7 @@ This API call returns a random missing person within 500 miles of the request's 
 
 - **exclude**: an `id` to exclude from your search results. Use this to ensure you don't get the same result twice in a row.
 - **limit**: mile radius to return geoquery results for. **Default**: 500.
-- **location**: use a specific location for request. Defaults to `request.ip`. Valid formats include an ip address [`50.78.167.161`] or address [`bethesda, md`, `421 fairview ave n. seattle`]. To specify a latitude/longitude
+- **location**: use a specific location for request. Defaults to `request.ip`. Valid formats include an ip address [`50.78.167.161`] or address [`bethesda, md`, `421 fairview ave n. seattle`]. To specify a latitude/longitude, use the query format `location[]=latitude&location[]=longitude`.
 
 ##### Response
 
