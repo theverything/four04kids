@@ -1,3 +1,26 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin orange_callout {
+  font-family: "Helvetica Neue";
+  background-color: #ff6d00;
+  color: #fff;
+}
+
+@mixin name_callout {
+  @include orange_callout;
+  font-size: 24px;
+  width: 160px;
+  height: 160px;
+  p {
+    padding-left: 24px;
+    padding-top: 40px;
+    line-height: 24px;
+  }
+}
+
+.name_box {
+  @include name_callout;
+}
+
