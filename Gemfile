@@ -51,6 +51,8 @@ gem "active_model_serializers"
 gem 's3'
 gem 'afterparty', github: 'hstove/afterparty'
 gem 'haml-rails'
+gem 'mixpanel'
+gem 'google-analytics-rails'
 
 group :test do
   gem 'rspec-rails'

@@ -77,4 +77,7 @@ Four04kids::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.middleware.use "Mixpanel::Middleware", "ecfd4290e7166a7f0c3ff849c38defa9"
+  GA.tracker = "UA-44242335-1"
 end

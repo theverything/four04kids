@@ -54,8 +54,10 @@ GEM
     dalli (2.6.4)
     diff-lcs (1.2.4)
     erubis (2.7.0)
+    escape (0.0.4)
     execjs (2.0.1)
     geocoder (1.1.8)
+    google-analytics-rails (0.0.4)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -81,6 +83,10 @@ GEM
     mime-types (1.25)
     mini_portile (0.5.1)
     minitest (4.7.5)
+    mixpanel (4.0.8)
+      escape
+      json
+      rack
     multi_json (1.8.0)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
@@ -174,10 +180,12 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   dalli
   geocoder
+  google-analytics-rails
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
   memcachier
+  mixpanel
   pg
   rails (= 4.0.0)
   rails_12factor

@@ -15,6 +15,7 @@
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
+    <%= analytics_init if Rails.env.production? %>
   </head>
   <body>
 
