@@ -8,7 +8,6 @@ class ApiController < ApplicationController
     else
       @query = Kid.all
     end
-    @query = @query.where("age > 0")
     @query = @query.where("id != ?", params[:exclude].to_i) if params[:exclude]
     @query = @query.order("RANDOM()").limit(1)
     @kid = @query.first

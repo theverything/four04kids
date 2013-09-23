@@ -63,13 +63,4 @@ ActiveRecord::Schema.define(version: 20130922002340) do
     t.integer  "views"
   end
 
-  create_table "request_locations", force: true do |t|
-    t.string   "ip_address"
-    t.string   "address"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end

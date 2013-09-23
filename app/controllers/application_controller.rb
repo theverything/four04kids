@@ -15,6 +15,9 @@ class ApplicationController < ActionController::Base
     else
       params[:location].each {|l| l = l.to_i } if params[:location].is_a? Array
       @location ||= Geocoder.search(params[:location]).first
+      allowed = [:latitude, :longitude, :address, :city]
+      puts @location.methods
+      @location
     end
   end
 end
