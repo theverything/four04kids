@@ -18,11 +18,11 @@ namespace :embed do
 
     STDOUT.sync = true
 
-    Dir.glob("app/assets/javascripts/embed/**/*").each do |file|
+    Dir.glob("embed/**/*").each do |file|
 
       if File.file?(file)
 
-        remote_file = file.gsub("app/assets/javascripts/embed/", "")
+        remote_file = file.gsub("embed/", "")
         begin
           obj = bucket.objects.find_first(remote_file)
         rescue
