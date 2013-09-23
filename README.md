@@ -7,7 +7,7 @@
 Simply drop this line of code on your page:
 
 ~~~HTML
-<script id='404kids-script' src="https://s3.amazonaws.com/404kids/src/embed.js" type="text/javascript"></script>
+<script id='kids404-script' src="https://s3.amazonaws.com/404kids/src/embed.js" type="text/javascript"></script>
 ~~~
 
 # API
