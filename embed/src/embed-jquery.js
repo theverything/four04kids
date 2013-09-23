@@ -2,13 +2,8 @@
 $.fn.four04 = function(options) {
   var settings;
   settings = $.extend({
-    color: "#FF6D00",
-    backgroundColor: "white",
-    bareCSS: "true",
-    width: 500,
     wrapperClass: "kids404-wrapper",
     kidsId: "kids404",
-    cssFile: "../src/embed-jquery.css",
     apiURL: "http://404kids.org/api/random",
     htmlTemplate: "<div class=\"{{wrapperClass}}\">\n  <div class=\"front\">\n    <h2>Missing Person Near <span class=\"geo-city\">Seattle</span></h2>\n    <div class=\"image\">\n      <img src=\"http://missingkids.com/{{image_url}}\">\n    </div>\n    <div class=\"info\">\n      <h3>{{full_name}}</h3>\n      <h4>Current Age {{ageString}}</h4>\n      <h4>Missing From {{missing_city}}, {{missing_state}}\n      <br>since {{month}} {{day}}, {{year}}</h4>\n      <h4 class=\"question\">Have You Seen This Person?</h4>\n      <br>\n      <a href=\"{{missingLink}}\" class=\"btn\">SEEN</a>\n      <a href=\"#\" class=\"btn\" id=\"new-kid\">NO</a>\n    </div>\n    <div class=\"more-info\" onclick=\"document.getElementById('kids404').className = 'flipped';\">\n      <span>?</span>\n    </div>\n  </div>\n  <div class=\"back\">\n    <p>This service is brought to you by <a href=\"http://404kids.org\">404kids</a>, and is intended to help reclaim\n    the visibility and independence of missing children.</p>\n\n    <p>If you would like to aid in\n    the search for missing and exploited adolescents, please <a href=\"http://404kids.org/docs\">add this widget to your site</a>.</p>\n\n    <p>If you have any information to report on one of our featured subjects, we urge you to <a href=\"{{missingLink}}\">fill out a report</a> immediately.</p>\n    <div class=\"more-info\" onclick=\"document.getElementById('kids404').className = '';\">\n      <span>x</span>\n    </div>\n  </div>\n</div>"
   }, options);

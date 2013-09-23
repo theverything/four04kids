@@ -1,12 +1,7 @@
 $.fn.four04 = (options) ->
   settings = $.extend(
-    color: "#FF6D00"
-    backgroundColor: "white"
-    bareCSS: "true"
-    width: 500
     wrapperClass: "kids404-wrapper"
     kidsId: "kids404"
-    cssFile: "../src/embed-jquery.css"
     apiURL: "http://404kids.org/api/random"
     htmlTemplate: """
 <div class="{{wrapperClass}}">
