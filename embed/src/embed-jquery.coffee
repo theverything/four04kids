@@ -41,9 +41,7 @@ $.fn.four04 = (options) ->
   , options)
   @each ->
     $this = $(this)
-    # kids = $(@)
     $this.attr("id", "#{settings.kidsId}")
-    # window.kidContent = kids
     newKid = (kid_id) ->
       apiCall = settings.apiURL
       apiCall = apiCall + "?exclude=#{kid_id}" if kid_id
@@ -87,5 +85,6 @@ $.fn.four04 = (options) ->
         )
     $this.bind
       newKid: newKid
-    $this.ready -> # show the first kid after everything else
-      $this.trigger "newKid"      
+    # show the first kid after everything else
+    $this.ready ->
+      $this.trigger "newKid"
