@@ -5,6 +5,8 @@ styles = """
   #kids404 {
     perspective: 1000;
     text-align: left;
+    box-sizing: content-box;
+    margin: 10px 0;
   }
   #kids404.flipped #{wrapperClass} {
     transform: rotateY(180deg);
@@ -25,6 +27,8 @@ styles = """
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
+    line-height: 1;
+    box-sizing: content-box;
   }
   #{wrapperClass} .front h2 {
     margin-top: 0;
@@ -49,18 +53,20 @@ styles = """
     margin-left: 10px;
     position: relative;
     left: 10px;
-    top: 17px;
+    top: 0px;
+    line-height: 14px;
   }
   #{wrapperClass} .info h3, #{wrapperClass} .info h4 {
-    margin: 0px 0 10px;
+    margin: 0px 0 18px;
   }
   #{wrapperClass} .info h3 {
     font-weight: bold;
   }
   #{wrapperClass} .info .question {
     font-weight: bold;
+    margin-bottom: 20px;
   }
-  #{wrapperClass} .btn {
+  #{wrapperClass} .btn-404 {
     text-decoration: none;
     color: white;
     padding: 10px 34px;
@@ -68,13 +74,10 @@ styles = """
     margin-right: 10px;
     border-radius: 3px;
   }
-  #{wrapperClass} .btn-yes {
-    background-color: rgba(0,162,0,0.8)
-  }
   #{wrapperClass} .more-info {
     position: absolute;
     right: 0px;
-    bottom: -35px;
+    bottom: 0px;
     cursor: pointer;
   }
   #{wrapperClass} .more-info span {
@@ -95,7 +98,7 @@ styles = """
     top: 15px;
     left: 10px;
     width: #{width}px;
-    height: 200px;
+    height: 235px;
   }
   #{wrapperClass} .back {
     -webkit-transform: rotateY(180deg);
@@ -105,11 +108,12 @@ styles = """
   #{wrapperClass} .front {
     z-index: 2;
   }
-  #{wrapperClass} h3, #{wrapperClass} h4 {
+  #{wrapperClass} h3, #{wrapperClass} h4, #{wrapperClass} h2 {
     font-weight: 300;
-    letter-spacing: 1px;
+    line-height: 1;
+    font-family: Helvetica, Arial, Sans-Serif;
   }
-  #{wrapperClass} h1 {
+  #{wrapperClass} h2 {
     font-size: 24px;
   }#{wrapperClass} h3 {
     font-size: 22px;
@@ -159,8 +163,8 @@ template = (data) ->
         <br>since #{months[month]} #{day}, #{year}</h4>
         <h4 class="question">Have You Seen This Person?</h4>
         <br>
-        <a href="#{missingLink}" class="btn">SEEN</a>
-        <a href="#" onclick="showKid(#{kid.id});return false;" class="btn">NO</a>
+        <a href="#{missingLink}" class="btn-404">SEEN</a>
+        <a href="#" onclick="showKid(#{kid.id});return false;" class="btn-404">NO</a>
       </div>
       <div class="more-info" onclick="document.getElementById('kids404').className = 'flipped';">
         <span>?</span>
@@ -197,7 +201,7 @@ window.showKid = (exclude=null) ->
       container = document.getElementById("kids404") || document.createElement('div')
       container.id = "kids404"
       container.innerHTML = html
-      script = document.getElementById("kids404-script")
+      script = document.getElementById("kids404-script") || document.getElementById("404kids")
       body = document.getElementsByTagName('body')[0]
       body.insertBefore(container, script)
 showKid()
