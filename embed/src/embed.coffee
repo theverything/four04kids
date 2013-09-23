@@ -77,7 +77,7 @@ styles = """
   #{wrapperClass} .more-info {
     position: absolute;
     right: 0px;
-    bottom: 0px;
+    bottom: 3px;
     cursor: pointer;
   }
   #{wrapperClass} .more-info span {
@@ -160,7 +160,7 @@ template = (data) ->
         <h3>#{kid.full_name}</h3>
         <h4>Current Age #{ageString}</h4>
         <h4>Missing From #{kid.missing_city}, #{kid.missing_state}
-        <br>since #{months[month]} #{day}, #{year}</h4>
+        <br>since #{months[month-1]} #{day}, #{year}</h4>
         <h4 class="question">Have You Seen This Person?</h4>
         <br>
         <a href="#{missingLink}" class="btn-404">SEEN</a>
