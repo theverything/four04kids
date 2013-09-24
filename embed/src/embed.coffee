@@ -202,8 +202,7 @@ window.showKid = (exclude=null) ->
       container.id = "kids404"
       container.innerHTML = html
       script = document.getElementById("kids404-script") || document.getElementById("404kids")
-      body = document.getElementsByTagName('body')[0]
-      body.insertBefore(container, script)
+      script.insertAdjacentElement('BeforeBegin', container)
 showKid()
 
 
