@@ -93,10 +93,14 @@
 
   desc "Set kid's aged photo."
   task set_aged_image_url: :environment do
-    kids = Kid.where("has_aged_photo = true")
+    kids = Kid.where(has_aged_photo: true)
     kids.each do |kid|
-      new_url =  kid.image_url.gsub(/c{1}(?=\d.jpg)/, "e")
-      kid.update_attribute(:aged_photo_url, new_url)
+      if kid.image_url
+        new_url =  kid.image_url.gsub(/c{1}(?=\d.jpg)/, "e")
+        kid.update_attribute(:aged_photo_url, new_url)
+      else
+        kid.update_attribute(:aged_photo_url, "no image")
+      end
     end
   end
 end
