@@ -1,4 +1,4 @@
-namespace :scrape do
+  namespace :scrape do
   desc "Scrape the missing kids database."
   task mk: :environment do
     require 'net/http'
@@ -61,18 +61,26 @@ namespace :scrape do
     end
   end
 
-  desc "Find out if a kid has an aged photo."
-  task aged_image: :environment do
+  desc "Add additional attributes to kids."
+  task add_attrs: :environment do
     require 'net/http'
     require 'json'
-
     kids = Kid.all
     kids.each do |kid|
       uri = URI("http://www.missingkids.com/missingkids/servlet/JSONDataServlet?action=childDetail&caseNum=#{kid.case_number}&orgPrefix=#{kid.org_prefix}")
       page = Net::HTTP.get(uri)
       json = JSON.parse(page)
       unless json["status"] == "error"
-        if kid.update_attribute(:has_aged_photo, json["childBean"]["hasAgedPhoto"])
+        attributes = {}
+        attributes[:height] = json["childBean"]["height"]
+        attributes[:eye_color] = json["childBean"]["eyeColor"].downcase
+        attributes[:race] = json["childBean"]["race"].downcase
+        attributes[:sex] = json["childBean"]["sex"].downcase
+        attributes[:weight] = json["childBean"]["weight"]
+        attributes[:hair_color] = json["childBean"]["hairColor"].downcase
+        attributes[:has_aged_photo] = json["childBean"]["hasAgedPhoto"]
+        attributes[:circumstance] = json["childBean"]["circumstance"]
+        if kid.update_columns(attributes)
           print "."
         else
           print "F"
