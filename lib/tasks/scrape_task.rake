@@ -73,11 +73,11 @@
       unless json["status"] == "error"
         attributes = {}
         attributes[:height] = json["childBean"]["height"]
-        attributes[:eye_color] = json["childBean"]["eyeColor"].downcase
-        attributes[:race] = json["childBean"]["race"].downcase
-        attributes[:sex] = json["childBean"]["sex"].downcase
+        attributes[:eye_color] = json["childBean"]["eyeColor"]
+        attributes[:race] = json["childBean"]["race"]
+        attributes[:sex] = json["childBean"]["sex"]
         attributes[:weight] = json["childBean"]["weight"]
-        attributes[:hair_color] = json["childBean"]["hairColor"].downcase
+        attributes[:hair_color] = json["childBean"]["hairColor"]
         attributes[:has_aged_photo] = json["childBean"]["hasAgedPhoto"]
         attributes[:circumstance] = json["childBean"]["circumstance"]
         if kid.update_columns(attributes)
