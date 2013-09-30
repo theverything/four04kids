@@ -30,7 +30,7 @@ styles = """
     line-height: 1;
     box-sizing: content-box;
   }
-  #{wrapperClass} .front h2 {
+  #{wrapperClass} .front h2, #{wrapperClass} .back h2 {
     margin-top: 0;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -133,6 +133,11 @@ template = (data) ->
   day = parseInt(missing.slice(8,10), 10)
   date = new Date(year, month-1, day)
   ageString = if kid.age then "#{kid.age} Years Old" else "Age Not Provided"
+  if kid.aged_photo_url
+    agedImage = "http://missingkids.com/#{kid.aged_photo_url}"
+  else
+    agedImage = "http://placehold.it/160x200&text=No+Aged+Photo+Found"
+  console.log kid
   months = [
     "January"
     "February"
@@ -171,13 +176,15 @@ template = (data) ->
       </div>
     </div>
     <div class="back">
-      <p>This service is brought to you by <a href="http://404kids.org">404kids</a>, and is intended to help reclaim
-      the visibility and independence of missing children.</p>
-
-      <p>If you would like to aid in
-      the search for missing and exploited adolescents, please <a href="http://404kids.org/docs">add this widget to your site</a>.</p>
-
-      <p>If you have any information to report on one of our featured subjects, we urge you to <a href="#{missingLink}">fill out a report</a> immediately.</p>
+      <h2>Missing Person Near <span class="geo-city">#{location.city}</span></h2>
+      <div class="image">
+        <img src="#{agedImage}">
+      </div>
+      <div class="info">
+        <p>#{kid.circumstance}</p>
+        <p><a href="#{missingLink}">Read More about #{kid.full_name}</a></p>
+        <p>Brought to you by <a href="http://404kids.org">404kids</a>.</p>
+      </div>
       <div class="more-info" onclick="document.getElementById('kids404').className = '';">
         <span>x</span>
       </div>
@@ -201,7 +208,7 @@ window.showKid = (exclude=null) ->
       container = document.getElementById("kids404") || document.createElement('div')
       container.id = "kids404"
       container.innerHTML = html
-      script = document.getElementById("kids404-script") || document.getElementById("404kids")
+      script = document.getElementById("kids404-script") || document.getElementById("404kids") || document.getElementById("404kids-script")
       script.insertAdjacentElement('BeforeBegin', container)
 showKid()
 
