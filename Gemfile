@@ -53,6 +53,7 @@ gem 'afterparty', github: 'hstove/afterparty'
 gem 'haml-rails'
 gem 'mixpanel'
 gem 'google-analytics-rails'
+gem 'will_paginate', '~> 3.0'
 
 group :test do
   gem 'rspec-rails'
