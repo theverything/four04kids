@@ -11,6 +11,11 @@ class Kid < ActiveRecord::Base
   before_save :geocode, :if => :address_changed?
 
   default_scope -> { where("age > 0") }
+  scope :excluding, -> (id) { where("id != ?", id.to_i) }
+  scope :random, -> { order("RANDOM()").limit(1).first }
+  scope :near_location, -> (location, limit) {
+    near([location.latitude, location.longitude], limit)
+  }
 
   def full_name
     "#{self.first_name} #{self.middle_name} #{last_name}"
@@ -51,6 +56,11 @@ class Kid < ActiveRecord::Base
     self.views ||= 0
     self.views += by
     self.save
+  end
+
+  def increment!(by=1)
+    job = Afterparty::BasicJob.new @kid, :increment
+    Rails.configuration.queue << job
   end
 
   def description

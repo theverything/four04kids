@@ -3,16 +3,13 @@ class ApiController < ApplicationController
   def random
     if location.country_code == "US"
       @limit = params[:limit].blank? ? 500 : params[:limit].to_i
-      @location_query = [location.latitude, location.longitude]
-      @query = Kid.near(@location_query, @limit)
+      @query = Kid.near_location(location, @limit)
     else
       @query = Kid.all
     end
-    @query = @query.where("id != ?", params[:exclude].to_i) if params[:exclude]
-    @query = @query.order("RANDOM()").limit(1)
-    @kid = @query.first
-    job = Afterparty::BasicJob.new @kid, :increment
-    Rails.configuration.queue << job
+    @query = @query.excluding(params[:exclude]) if params[:exclude]
+    @kid = @query.random
+    @kid.increment!
     render json: @kid, meta: {location: location.data}
   end
 
