@@ -17,3 +17,6 @@
 config/database.yml
 .ruby-version
 .ruby-gemset
+
+# Ignore schema.rb
+/db/schema.rb
