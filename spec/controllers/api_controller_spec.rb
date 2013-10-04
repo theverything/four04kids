@@ -56,6 +56,23 @@ describe ApiController do
       get 'index'
       response.should be_success
     end
+
+    it "allows filtering by parameters" do
+      get 'index', missing_state: "WA"
+      assigns(:kids).each do |kid|
+        kid.missing_state.should eq("WA")
+      end
+    end
+
+    it "should paginate" do
+      get 'index', {per_page: 200}
+      assigns(:per_page).should eq(100)
+      get 'index', {per_page: 2}
+      assigns(:per_page).should eq(2)
+      (kids = assigns(:kids)).to_a.length.should eq(2)
+      get 'index', {per_page: 2, page: 2}
+      assigns(kids).should_not eq(kids)
+    end
   end
 
 end

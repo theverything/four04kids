@@ -14,7 +14,9 @@ class ApiController < ApplicationController
   end
 
   def index
-    Kid.all.to_a
+    @kids = Kid.where(api_params).paginate(pagination_params)
+    @kids = @kids.order("missing_date DESC")
+    render json: @kids
   end
 
   def show
@@ -25,5 +27,21 @@ class ApiController < ApplicationController
   def set_access_control_headers
     headers['Access-Control-Allow-Origin'] = '*'
     headers['Access-Control-Request-Method'] = '*'
+  end
+
+  def api_params
+    params.permit(:sex, :missing_state)
+  end
+
+  def pagination_params
+    if params[:per_page]
+      @per_page = [params[:per_page].to_i, 100].min
+    else
+      @per_page = 100
+    end
+    {
+      page: params[:page] || 1,
+      per_page: @per_page
+    }
   end
 end
