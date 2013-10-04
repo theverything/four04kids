@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/theverything/four04kids.png)](https://codeclimate.com/github/theverything/four04kids)
+
 # Embedding Widget
 
 ### Installation
