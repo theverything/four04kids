@@ -14,6 +14,55 @@ Simply drop this line of code on your page:
 
 # API
 
+### index `/api/index`
+
+This API returns a list of missing persons in the US.
+
+##### Optional Parameters
+
+- **missing_state**: a 2-digit capitalized state name abbreviation, like *WA*. Default: *nil*
+- **sex**: 'Male' or 'Female'. Default: *nil*
+- **page**: The page of API responses you wish to fetch. Use this for pagination. Default: *1*.
+- **per_page**: How many results you would like returned per page. Maximum: *100*. Default: *100*.
+
+*If you would like to use more advanced filters, feel free to [file an issue](https://github.com/theverything/four04kids/issues/new) or [contribute some code](https://github.com/theverything/four04kids/blob/master/app/controllers/api_controller.rb).*
+
+##### Response
+
+~~~javascript
+{
+  "api": [
+    {
+      "id": 1291,
+      "missing_city": "Gaithersburg",
+      "missing_state": "MD",
+      "missing_county": "Montgomery",
+      "missing_country": "US",
+      "missing_date": "2013-10-02",
+      "age": 15,
+      "thumbnail_url": "/photographs/USMDr13047111c1t.jpg",
+      "image_url": "/photographs/USMDr13047111c1.jpg",
+      "aged_photo_url": null,
+      "case_number": "r13047111",
+      "org_prefix": "USMD",
+      "first_name": "Jacob",
+      "last_name": "Harris",
+      "middle_name": "",
+      "full_name": "Jacob  Harris",
+      "missing_url": "http://www.missingkids.com/missingkids/servlet/PubCaseSearchServlet?act=viewPoster&caseNum=r13047111&orgPrefix=USMD",
+      "weight": null,
+      "height": null,
+      "eye_color": null,
+      "hair_color": null,
+      "race": null,
+      "sex": null,
+      "circumstance": null,
+      "has_aged_photo": null
+    }, { ... }, ...
+  ]
+}
+~~~
+
 ### random `/api/random`
 
 This API call returns a random missing person within 500 miles of the request's location.
