@@ -1,0 +1,107 @@
+#kids404 {
+  perspective: 1000;
+  text-align: left;
+}
+#kids404.flipped .kids404-wrapper {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}
+.kids404-wrapper {
+  font-family: Helvetica, Arial, Sans-Serif;
+  font-weight: 300;
+  margin: 0px auto;
+  width: 500px;
+  box-shadow: 0 0 4px black;
+  padding: 10px 10px 23px 10px;
+  border-radius: 3px;
+  position: relative;
+  height: 235px;
+  transition: 0.5s;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+}
+.kids404-wrapper .front h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: 200;
+}
+.kids404-wrapper .geo-city {
+  font-weight: 500;
+  color: #FF6D00;
+}
+.kids404-wrapper .image {
+  float: left;
+  width: 160px;
+  height: 200px;
+}
+.kids404-wrapper .image img {
+  max-width: 160px;
+  max-height: 200px;
+}
+.kids404-wrapper .info {
+  margin-left: 10px;
+  position: relative;
+  left: 10px;
+  top: 17px;
+}
+.kids404-wrapper .info h3, .kids404-wrapper .info h4 {
+  margin: 0px 0 10px;
+}
+.kids404-wrapper .info h3 {
+  font-weight: bold;
+}
+.kids404-wrapper .info .question {
+  font-weight: bold;
+}
+.kids404-wrapper .btn {
+  text-decoration: none;
+  color: white;
+  padding: 10px 34px;
+  background-color: #FF6D00;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+.kids404-wrapper .btn-yes {
+  background-color: rgba(0,162,0,0.8)
+}
+.kids404-wrapper .more-info {
+  position: absolute;
+  right: 0px;
+  bottom: -35px;
+  cursor: pointer;
+}
+.kids404-wrapper .more-info span {
+  border-radius: 8px;
+  font-size: 10px;
+  background-color: #ccc;
+  padding: 3px 6px;
+  color: white;
+  font-weight: 500;
+  font-family: Courier New;
+}
+
+.kids404-wrapper .front, .kids404-wrapper .back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  width: 500px;
+  height: 200px;
+}
+.kids404-wrapper .back {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.kids404-wrapper .front {
+  z-index: 2;
+}
+.kids404-wrapper h3, .kids404-wrapper h4 {
+  font-weight: 300;
+  letter-spacing: 1px;
+}
